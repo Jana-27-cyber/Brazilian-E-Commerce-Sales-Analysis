@@ -1,0 +1,455 @@
+{
+  "cleaning_decisions": [
+    {
+      "Issue": "Date columns stored as text",
+      "Evidence": "8 date columns across 3 tables",
+      "Decision": "Converted to datetime",
+      "Why": "Needed for monthly trends and delivery time; 0 values failed to parse"
+    },
+    {
+      "Issue": "Missing order timestamps",
+      "Evidence": "160 / 1,783 / 2,965 gaps in approval / carrier / customer delivery",
+      "Decision": "Kept as missing",
+      "Why": "Gaps follow order status (canceled, shipped, unavailable); filling would invent dates"
+    },
+    {
+      "Issue": "Delivered orders without a delivery date",
+      "Evidence": "8 orders",
+      "Decision": "Flagged, excluded from delivery-time metrics only",
+      "Why": "They still count as completed sales"
+    },
+    {
+      "Issue": "Conflicting delivery timestamps",
+      "Evidence": "1382 orders where pickup precedes approval or delivery precedes pickup",
+      "Decision": "Flagged, kept",
+      "Why": "Order value and status are valid; deleting would remove real sales"
+    },
+    {
+      "Issue": "Products without category",
+      "Evidence": "610 products, 1,603 order items",
+      "Decision": "Labelled 'unknown'",
+      "Why": "Deleting them would remove revenue and bias category results"
+    },
+    {
+      "Issue": "Two categories missing English names",
+      "Evidence": "pc_gamer, portateis_cozinha_e_preparadores_de_alimentos",
+      "Decision": "Translated manually",
+      "Why": "Avoids Portuguese labels in charts"
+    },
+    {
+      "Issue": "Misspelled column names",
+      "Evidence": "product_name_lenght, product_description_lenght",
+      "Decision": "Renamed to *_length",
+      "Why": "Consistent column names"
+    },
+    {
+      "Issue": "Zero-value payments",
+      "Evidence": "9 rows (vouchers and 'not_defined')",
+      "Decision": "Flagged, kept",
+      "Why": "Valid zero-cost vouchers; no effect on price-based revenue"
+    },
+    {
+      "Issue": "Duplicate rows",
+      "Evidence": "0 fully duplicated rows in all 8 tables",
+      "Decision": "Nothing removed",
+      "Why": "Repeated IDs are valid multi-item orders or split payments"
+    },
+    {
+      "Issue": "Orders without item rows",
+      "Evidence": "775 orders (mostly unavailable / canceled)",
+      "Decision": "Kept in the orders table",
+      "Why": "No price exists, so they add no revenue"
+    },
+    {
+      "Issue": "Zip codes lost leading zeros",
+      "Evidence": "Stored as integers",
+      "Decision": "Padded to 5 characters",
+      "Why": "Zip prefixes are identifiers, not numbers"
+    },
+    {
+      "Issue": "Review comment text",
+      "Evidence": "Large and mostly empty",
+      "Decision": "Dropped from the cleaned reviews file only",
+      "Why": "Not analysed; the raw file keeps the text"
+    }
+  ],
+  "validation_checks": 27,
+  "validation_passed": 18,
+  "total_revenue": 13221498.11,
+  "total_orders": 96478,
+  "aov": 137.0415857501192,
+  "total_units": 110197,
+  "top_units_category": "bed_bath_table",
+  "top_units_category_units": 10953,
+  "top_revenue_category": "health_beauty",
+  "top_revenue_category_value": 1233131.72,
+  "best_product_id": "bb50f2e236e5eea0100680137654686c",
+  "best_product_category": "health_beauty",
+  "best_product_revenue": 63560.0,
+  "best_product_units": 194,
+  "realization_pct": 97.27666794267128,
+  "all_status_value": 13591643.7,
+  "kpi_table": [
+    {
+      "KPI": "Total Revenue",
+      "Value": "R$13,221,498.11",
+      "Meaning": "Total value of all completed (delivered) sales, excluding freight"
+    },
+    {
+      "KPI": "Total Orders",
+      "Value": "96,478",
+      "Meaning": "Number of delivered orders"
+    },
+    {
+      "KPI": "Average Order Value",
+      "Value": "R$137.04",
+      "Meaning": "Revenue divided by total orders"
+    },
+    {
+      "KPI": "Total Units Sold",
+      "Value": "110,197",
+      "Meaning": "Sum of items sold in delivered orders"
+    },
+    {
+      "KPI": "Top-Selling Category",
+      "Value": "bed_bath_table (10,953 units)",
+      "Meaning": "Category with the most units sold"
+    },
+    {
+      "KPI": "Top Revenue Category",
+      "Value": "health_beauty (R$1,233,132)",
+      "Meaning": "Category with the highest sales contribution"
+    },
+    {
+      "KPI": "Top Revenue-Generating Product",
+      "Value": "bb50f2e236... (health_beauty, R$63,560)",
+      "Meaning": "Product with the highest revenue (Olist hides product names)"
+    },
+    {
+      "KPI": "Revenue Realization",
+      "Value": "97.3%",
+      "Meaning": "Delivered product value as a share of the value of all orders"
+    }
+  ],
+  "peak_month": "Nov 2017",
+  "peak_revenue": 987765.37,
+  "peak_growth_pct": 52.374693529548466,
+  "prev_month": "Oct 2017",
+  "first_month": "Jan 2017",
+  "first_revenue": 111798.36,
+  "last_month": "Aug 2018",
+  "last_revenue": 838576.64,
+  "growth_total_pct": 650.0795539397894,
+  "drop_after_peak_pct": -26.4974039330818,
+  "bf_orders": 1176,
+  "nov_typical_orders": 192.0,
+  "monthly": [
+    {
+      "month": "Jan 2017",
+      "revenue": 111798.36,
+      "orders": 750,
+      "units": 913,
+      "revenue_growth_pct": NaN
+    },
+    {
+      "month": "Feb 2017",
+      "revenue": 234223.4,
+      "orders": 1653,
+      "units": 1858,
+      "revenue_growth_pct": 109.50521993345879
+    },
+    {
+      "month": "Mar 2017",
+      "revenue": 359198.85,
+      "orders": 2546,
+      "units": 2897,
+      "revenue_growth_pct": 53.35737163750505
+    },
+    {
+      "month": "Apr 2017",
+      "revenue": 340669.68,
+      "orders": 2303,
+      "units": 2569,
+      "revenue_growth_pct": -5.158471414927968
+    },
+    {
+      "month": "May 2017",
+      "revenue": 489338.25,
+      "orders": 3546,
+      "units": 4004,
+      "revenue_growth_pct": 43.64009441638599
+    },
+    {
+      "month": "Jun 2017",
+      "revenue": 421923.37,
+      "orders": 3135,
+      "units": 3489,
+      "revenue_growth_pct": -13.776744409414142
+    },
+    {
+      "month": "Jul 2017",
+      "revenue": 481604.52,
+      "orders": 3872,
+      "units": 4416,
+      "revenue_growth_pct": 14.14502116818037
+    },
+    {
+      "month": "Aug 2017",
+      "revenue": 554699.7,
+      "orders": 4193,
+      "units": 4797,
+      "revenue_growth_pct": 15.177428152044747
+    },
+    {
+      "month": "Sep 2017",
+      "revenue": 607399.67,
+      "orders": 4150,
+      "units": 4737,
+      "revenue_growth_pct": 9.500630701621082
+    },
+    {
+      "month": "Oct 2017",
+      "revenue": 648247.65,
+      "orders": 4478,
+      "units": 5214,
+      "revenue_growth_pct": 6.725057983650196
+    },
+    {
+      "month": "Nov 2017",
+      "revenue": 987765.37,
+      "orders": 7289,
+      "units": 8475,
+      "revenue_growth_pct": 52.374693529548466
+    },
+    {
+      "month": "Dec 2017",
+      "revenue": 726033.1900000001,
+      "orders": 5513,
+      "units": 6187,
+      "revenue_growth_pct": -26.4974039330818
+    },
+    {
+      "month": "Jan 2018",
+      "revenue": 924645.0,
+      "orders": 7069,
+      "units": 8037,
+      "revenue_growth_pct": 27.35574802027989
+    },
+    {
+      "month": "Feb 2018",
+      "revenue": 826437.13,
+      "orders": 6555,
+      "units": 7518,
+      "revenue_growth_pct": -10.621143249571452
+    },
+    {
+      "month": "Mar 2018",
+      "revenue": 953356.25,
+      "orders": 7003,
+      "units": 8017,
+      "revenue_growth_pct": 15.35738356770102
+    },
+    {
+      "month": "Apr 2018",
+      "revenue": 973534.09,
+      "orders": 6798,
+      "units": 7827,
+      "revenue_growth_pct": 2.1165057658141917
+    },
+    {
+      "month": "May 2018",
+      "revenue": 977544.6900000001,
+      "orders": 6749,
+      "units": 7810,
+      "revenue_growth_pct": 0.41196297502021917
+    },
+    {
+      "month": "Jun 2018",
+      "revenue": 856077.86,
+      "orders": 6099,
+      "units": 7010,
+      "revenue_growth_pct": -12.42570608204112
+    },
+    {
+      "month": "Jul 2018",
+      "revenue": 867953.46,
+      "orders": 6159,
+      "units": 6963,
+      "revenue_growth_pct": 1.3872102708041067
+    },
+    {
+      "month": "Aug 2018",
+      "revenue": 838576.64,
+      "orders": 6351,
+      "units": 7142,
+      "revenue_growth_pct": -3.3846077415256692
+    }
+  ],
+  "cat_growth": {
+    "watches_gifts": 241.98196202345983,
+    "health_beauty": 210.33148175296085,
+    "sports_leisure": 138.62861174839023,
+    "computers_accessories": 131.21947701283227,
+    "bed_bath_table": 109.22369337288926
+  },
+  "fastest_cat": "watches_gifts",
+  "fastest_cat_growth": 241.98196202345983,
+  "slowest_cat": "bed_bath_table",
+  "slowest_cat_growth": 109.22369337288926,
+  "top_state": "SP",
+  "top_state_share": 38.328736409735036,
+  "top3_state_share": 63.37985340452467,
+  "top_city": "sao paulo",
+  "top_city_share": 15.594228736084911,
+  "top10_city_share": 35.13132527622878,
+  "hv_threshold": 269.0,
+  "hv_top_city": "sao paulo",
+  "hv_top_city_index": 0.8656982920591846,
+  "hv_top_city_share_high": 13.499897182808965,
+  "hv_top_city_share_all": 15.594228736084911,
+  "unique_customers": 93358,
+  "repeat_customers": 2801,
+  "repeat_pct": 3.0002784978255748,
+  "repeat_rev_share": 5.509275453808615,
+  "rev_per_repeat": 260.05310603355946,
+  "rev_per_onetime": 137.95829543823226,
+  "top10_cust_share": 41.09779803160293,
+  "over_cat": "bed_bath_table",
+  "over_cat_pp": 5.587066645016116,
+  "under_cat": "health_beauty",
+  "under_cat_pp": -1.9575388654014985,
+  "best_repeat_state": "RJ",
+  "best_repeat_state_pct": 3.2818532818532815,
+  "worst_repeat_state": "CE",
+  "worst_repeat_state_pct": 1.669316375198728,
+  "avg_delivery_days": 12.558217098051976,
+  "median_delivery_days": 10.217476851851853,
+  "late_pct": 8.112366538820359,
+  "worst_late_state": "MA",
+  "worst_late_pct": 19.665271966527197,
+  "best_late_state": "PR",
+  "best_late_pct": 4.996953077391835,
+  "score_late": 2.566505678109907,
+  "score_ontime": 4.294292012144172,
+  "cancel_pct": 1.2409368369183738,
+  "lost_value": 97242.96,
+  "status_counts": {
+    "delivered": 96478,
+    "shipped": 1107,
+    "canceled": 625,
+    "unavailable": 609,
+    "invoiced": 314,
+    "processing": 301,
+    "created": 5,
+    "approved": 2
+  },
+  "pay_share": {
+    "credit_card": 78.46409386819963,
+    "boleto": 17.960378967436405,
+    "voucher": 2.224114380151905,
+    "debit_card": 1.351412784212076
+  },
+  "top_payment": "credit_card",
+  "top_payment_pct": 78.46409386819963,
+  "avg_installments": 3.5013139195023193,
+  "multi_installment_pct": 66.80208081945673,
+  "top10_cat_share": 62.43115690314159,
+  "top10_units_share": 3.476501175168108,
+  "top10_cheaper_than_avg": 8,
+  "avg_item_price": 119.98056308247955,
+  "top_units_product_units": 520,
+  "top_units_product_category": "furniture_decor",
+  "delivered_share": 97.02034372140264,
+  "findings": [
+    [
+      "Overall performance",
+      "Delivered orders generated R$13,221,498 from 96,478 orders, an average order value of R$137.04, and delivered orders hold 97.3% of the product value of all orders (the rest is canceled, unavailable or still in progress).",
+      "These figures are the baseline against which any future campaign should be judged."
+    ],
+    [
+      "Growth with a one-off spike",
+      "Monthly revenue rose 650% from Jan 2017 to Aug 2018. Nov 2017 was the peak month (+52% on Oct 2017), with 1,176 orders on 24 Nov 2017 alone (6.1x a typical November day), and December fell 26% below the peak.",
+      "A one-day surge that fades suggests a promotion such as Black Friday rather than lasting growth; this is an inference, not proof."
+    ],
+    [
+      "Category concentration",
+      "health_beauty leads revenue (R$1,233,132) while bed_bath_table leads units (10,953). The top 10 categories provide 62.4% of revenue.",
+      "Revenue and volume leaders differ, so marketing should follow revenue while stock planning follows units."
+    ],
+    [
+      "Weak customer retention",
+      "Only 3.00% of 93,358 customers ordered more than once, yet they produce 5.51% of revenue (R$260 per repeat customer versus R$138 for one-time customers).",
+      "Repeat customers are worth more individually, so even a small rise in repeat buying would lift revenue."
+    ],
+    [
+      "Skewed customer value",
+      "The top 10% of customers generate 41.1% of revenue.",
+      "Revenue depends on a minority of high-spending customers, so protecting them matters."
+    ],
+    [
+      "Geographic concentration",
+      "SP contributes 38.3% of revenue and the top three states 63.4%. Sao Paulo holds 15.6% of orders. High-value orders (R$269 and above) follow order volume rather than clustering in one city: Sao Paulo has 13.5% of them against 15.6% of all orders.",
+      "A few regions carry the business, so their delivery quality has an outsized effect, but there is no sign of a city that only buys expensive items."
+    ],
+    [
+      "Delivery quality",
+      "Average delivery takes 12.6 days and 8.11% of orders arrive after the estimated date; MA is the worst state at 19.7%. Late orders score 2.57 in reviews against 4.29 for on-time orders.",
+      "Late delivery is associated with clearly lower satisfaction, which can reduce repeat purchases (association, not proven cause)."
+    ],
+    [
+      "Payments and cancellations",
+      "Credit Card makes up 78.5% of payment value and 67% of card payments use installments. 1.24% of orders were canceled or unavailable (R$97,243 of product value).",
+      "Checkout should be designed around card installments, and cancellations are lost revenue worth tracking."
+    ]
+  ],
+  "recommendations": [
+    [
+      "Launch retention campaigns (finding: weak retention)",
+      "Target one-time buyers with follow-up offers after delivery, because each repeat customer is worth R$260 against R$138 for a one-time customer."
+    ],
+    [
+      "Prepare capacity for promotional peaks (finding: growth with a one-off spike)",
+      "Plan stock and logistics ahead of November campaigns and keep the post-peak decline in mind when forecasting."
+    ],
+    [
+      "Fix delivery in the weakest states first (finding: delivery quality)",
+      "Review carrier performance and delivery estimates in MA and the other high-late states; set more realistic estimates where lateness is structural."
+    ],
+    [
+      "Balance marketing and inventory by category (finding: category concentration)",
+      "Spend marketing budget on health_beauty and similar high-revenue categories, and base stock decisions on units sold."
+    ],
+    [
+      "Keep installment options visible at checkout (finding: payments)",
+      "Because most value is paid by card and many payments use installments, make installment choices prominent."
+    ],
+    [
+      "Investigate cancellations by month and seller (finding: payments and cancellations)",
+      "Find out whether unavailable stock or seller behaviour drives cancellations, since each one is lost revenue."
+    ]
+  ],
+  "limitations": [
+    "Revenue is product price only; freight and installment interest are excluded, so it is lower than the total customers paid.",
+    "Olist has no quantity or product-name column. Each item row is treated as one unit and products are identified by ID and category.",
+    "Trends use January 2017 to August 2018; 2016 and September-October 2018 contain too few orders to be reliable.",
+    "610 products have no category and appear as 'unknown'.",
+    "The dataset covers one marketplace over about two years, so seasonality cannot be confirmed from a single November.",
+    "The Black Friday explanation is an inference from the daily order spike; the data has no campaign information.",
+    "Associations (late delivery and low review scores) do not prove cause and effect.",
+    "Repeat customers are identified by customer_unique_id; the same person with a different ID would be missed.",
+    "Geolocation data was not needed for this analysis and is not included in the repository."
+  ],
+  "captions": {
+    "revenue-by-category": "health_beauty earns the most (R$1,233,132). The top 10 categories together provide 62.4% of revenue, so a small set of categories drives results.",
+    "top-10-products-by-units": "The best-selling product (furniture_decor) sold 520 units. 8 of these 10 products cost less than the average item price (R$120), and together they are only 3.5% of all units, so volume is spread across many products rather than a few hits.",
+    "orders-by-city": "Sao Paulo alone accounts for 15.6% of delivered orders and the top 10 cities for 35.1%, so order density is highly concentrated in a few large cities.",
+    "delivery-status-counts": "97.0% of orders reach the delivered status. Canceled and unavailable orders together are 1.24% of orders (R$97,243 of product value that never became revenue).",
+    "revenue-by-state": "SP contributes 38.3% of revenue and the top three states 63.4%, so service quality in these states has the largest effect on overall results.",
+    "late-delivery-by-state": "MA has the highest late rate (19.7% versus 8.1% nationally). Late orders average a review score of 2.57 compared with 4.29 for on-time orders, which suggests lateness is linked to unhappy customers.",
+    "monthly-sales-trend": "Revenue grew from R$111,798 in Jan 2017 to R$838,577 in Aug 2018. Nov 2017 is the peak (+52% on Oct 2017), and 1,176 orders on 24 Nov 2017 alone (6.1x a typical November day) point to a promotion such as Black Friday as the likely driver. Revenue then fell 26% in December, so the jump was a spike, not a new baseline.",
+    "category-revenue-trend": "Between Jan-Aug 2017 and Jan-Aug 2018, watches_gifts grew fastest (+242%) while bed_bath_table grew slowest (+109%), so category growth is uneven.",
+    "payment-mode-share": "Credit Card accounts for 78.5% of payment value, and 67% of card payments are split into installments, so installment-friendly checkout matters to customers.",
+    "dashboard-mockup": "One page combines six KPIs, the monthly trend, category and regional comparisons: SP and health_beauty lead, and Nov 2017 stands out as the peak month."
+  },
+  "pay_orders_note": "Payment shares use payment_value of delivered orders."
+}

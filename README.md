@@ -1,252 +1,134 @@
 # Brazilian E-Commerce Sales Analysis
 
-## Week 1 – Data Science Internship Project
+## Week 1 – Data Science Internship, WeIntern Pvt Ltd
 
-## Project Overview
+**Week:** 1 of the Data Science Internship
+**Objective:** Build disciplined habits in data cleaning, structured analysis, visualization and reporting by cleaning the Olist Brazilian e-commerce dataset, calculating business KPIs, analysing sales and customer behaviour, and presenting the results through charts, a dashboard mockup and a written report.
 
-This project focuses on cleaning, analyzing, and visualizing the Brazilian E-Commerce Public Dataset by Olist.
+![Dashboard mockup](outputs/dashboard/dashboard-mockup.png)
 
-The objective is to understand e-commerce sales performance, customer purchasing behavior, product category performance, payment preferences, and delivery trends using Python and data analysis techniques.
+## Dataset Description
 
-The project includes data inspection, data cleaning, exploratory data analysis (EDA), KPI calculation, customer analysis, business insights, and data visualization.
+Public **Olist Brazilian E-Commerce Dataset** ([Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)): about 100,000 orders placed on a Brazilian marketplace between 2016 and 2018.
 
-## Project Objectives
+Eight tables are used: customers, orders, order items, payments, reviews, products, sellers and the category translation. The geolocation table is not needed for the required analysis and is not included.
 
-- Inspect and understand the raw datasets.
-- Identify missing values, duplicate records, and data quality issues.
-- Clean and validate datasets while preserving the original raw data.
-- Analyze sales performance and calculate business KPIs.
-- Identify top-performing product categories and products.
-- Understand customer purchasing behavior.
-- Analyze monthly sales and delivery performance.
-- Create meaningful visualizations and a dashboard.
-- Generate business insights and recommendations.
+Notes on the data:
+- There is no quantity column. Each order item row is one unit.
+- Product names are hidden, so products are identified by ID and category.
+- Dates are stored as text in the raw files and are converted during cleaning.
 
-## Technologies Used
+## Tools and Libraries
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Jupyter Notebook
-- VS Code
-- Git and GitHub
+Python, Pandas, NumPy, Matplotlib, Jupyter Notebook, Git and GitHub.
 
-## Dataset Overview
+## Key Steps Performed
 
-The project uses the Brazilian E-Commerce Public Dataset by Olist.
+1. **Inspection:** loaded all tables, classified every column (identifier, numeric, categorical, date, text) and recorded sizes.
+2. **Missing values:** measured gaps column by column and chose a documented strategy for each (keep and flag, fill with a label, fill with the median).
+3. **Duplicates:** checked full-row duplicates and repeated IDs. No accidental duplicates were found, so nothing was removed.
+4. **Validation:** 27 rules tested (18 with zero violations) covering prices, payment values, review scores, date formats and order, standardized values, and links between tables.
+5. **Cleaning:** converted dates, standardized text, fixed column names, translated two missing category names, and saved cleaned files separately. Raw data is untouched.
+6. **KPIs:** revenue, orders, average order value, units, top category and top product, calculated on delivered orders and verified against the raw files.
+7. **Analysis:** monthly trend, category trend, regions, customer segments, delivery performance and payments.
+8. **Visualization:** 6 bar charts, 2 line charts, 1 pie chart and a dashboard mockup, each with a title, labelled axes and a written finding.
+9. **Reporting:** a 10-section PDF report with findings, recommendations and limitations.
 
-The analysis uses nine datasets covering:
+## KPI Summary (delivered orders, freight excluded)
 
-- Customers
-- Geolocation
-- Orders
-- Order items
-- Payments
-- Reviews
-- Products
-- Sellers
-- Product category translation
+| KPI | Value |
+| --- | --- |
+| Total Revenue | R$13,221,498.11 |
+| Total Orders | 96,478 |
+| Average Order Value | R$137.04 |
+| Total Units Sold | 110,197 |
+| Top-Selling Category (units) | bed_bath_table (10,953) |
+| Top Revenue Category | health_beauty (R$1,233,132) |
+| Top Revenue-Generating Product | `bb50f2e236e5eea0100680137654686c` (health_beauty, R$63,560) |
 
-These datasets contain information about customer orders, products, payments, sellers, delivery, and reviews.
+Revenue is the sum of item price for orders with status `delivered`. Freight is excluded.
 
-## Analysis Performed
+## Major Findings
 
-### 1. Data Inspection
+1. **Overall performance:** Delivered orders generated R$13,221,498 from 96,478 orders, an average order value of R$137.04, and delivered orders hold 97.3% of the product value of all orders (the rest is canceled, unavailable or still in progress).
+2. **Growth with a one-off spike:** Monthly revenue rose 650% from Jan 2017 to Aug 2018. Nov 2017 was the peak month (+52% on Oct 2017), with 1,176 orders on 24 Nov 2017 alone (6.1x a typical November day), and December fell 26% below the peak.
+3. **Category concentration:** health_beauty leads revenue (R$1,233,132) while bed_bath_table leads units (10,953). The top 10 categories provide 62.4% of revenue.
+4. **Weak customer retention:** Only 3.00% of 93,358 customers ordered more than once, yet they produce 5.51% of revenue (R$260 per repeat customer versus R$138 for one-time customers).
+5. **Skewed customer value:** The top 10% of customers generate 41.1% of revenue.
+6. **Geographic concentration:** SP contributes 38.3% of revenue and the top three states 63.4%. Sao Paulo holds 15.6% of orders. High-value orders (R$269 and above) follow order volume rather than clustering in one city: Sao Paulo has 13.5% of them against 15.6% of all orders.
+7. **Delivery quality:** Average delivery takes 12.6 days and 8.11% of orders arrive after the estimated date; MA is the worst state at 19.7%. Late orders score 2.57 in reviews against 4.29 for on-time orders.
+8. **Payments and cancellations:** Credit Card makes up 78.5% of payment value and 67% of card payments use installments. 1.24% of orders were canceled or unavailable (R$97,243 of product value).
 
-- Loaded and inspected the original datasets.
-- Examined dataset dimensions and column names.
-- Checked data types and data consistency.
-- Identified missing values and duplicate records.
-- Investigated data quality issues across datasets.
+## Recommendations
 
-### 2. Data Cleaning
+- **Launch retention campaigns (finding: weak retention):** Target one-time buyers with follow-up offers after delivery, because each repeat customer is worth R$260 against R$138 for a one-time customer.
+- **Prepare capacity for promotional peaks (finding: growth with a one-off spike):** Plan stock and logistics ahead of November campaigns and keep the post-peak decline in mind when forecasting.
+- **Fix delivery in the weakest states first (finding: delivery quality):** Review carrier performance and delivery estimates in MA and the other high-late states; set more realistic estimates where lateness is structural.
+- **Balance marketing and inventory by category (finding: category concentration):** Spend marketing budget on health_beauty and similar high-revenue categories, and base stock decisions on units sold.
+- **Keep installment options visible at checkout (finding: payments):** Because most value is paid by card and many payments use installments, make installment choices prominent.
+- **Investigate cancellations by month and seller (finding: payments and cancellations):** Find out whether unavailable stock or seller behaviour drives cancellations, since each one is lost revenue.
 
-- Identified and analyzed missing values.
-- Checked duplicate records.
-- Validated important columns and data types.
-- Investigated missing product and payment information.
-- Preserved missing values when original records could not verify the actual values.
-- Saved cleaned datasets separately without modifying the original raw datasets.
+## Visual Outputs
 
-### 3. Sales Analysis
+| Chart | File |
+| --- | --- |
+| Monthly sales trend (line) | `outputs/charts/monthly-sales-trend.png` |
+| Top 5 category revenue trend (line) | `outputs/charts/category-revenue-trend.png` |
+| Revenue by category (bar) | `outputs/charts/revenue-by-category.png` |
+| Top 10 products by units (bar) | `outputs/charts/top-10-products-by-units.png` |
+| Orders by city (bar) | `outputs/charts/orders-by-city.png` |
+| Orders by delivery status (bar) | `outputs/charts/delivery-status-counts.png` |
+| Revenue by state (bar) | `outputs/charts/revenue-by-state.png` |
+| Late delivery rate by state (bar) | `outputs/charts/late-delivery-by-state.png` |
+| Payment mode share (pie) | `outputs/charts/payment-mode-share.png` |
+| Dashboard mockup | `outputs/dashboard/dashboard-mockup.png` |
 
-- Monthly sales and order trends.
-- Order status distribution.
-- Product category performance.
-- Payment method analysis.
-- Credit card installment analysis.
-- State-wise and city-wise sales.
-- Freight cost analysis.
-- Delivery performance analysis.
-- Product-level revenue analysis.
+![Monthly sales trend](outputs/charts/monthly-sales-trend.png)
 
-### 4. Customer Analysis
+## Folder Structure
 
-- Unique customer identification using customer unique IDs.
-- One-time customer analysis.
-- Repeat customer analysis.
-- State-wise customer distribution.
-- City-wise customer distribution.
-- Customer purchasing behavior analysis.
+```
+data-science-week1-assignment/
+├── data/
+│   ├── raw/          # original Olist files (unchanged)
+│   └── cleaned/      # cleaned tables and final_sales_dataset.csv
+├── notebooks/
+│   └── week1_analysis.ipynb
+├── outputs/
+│   ├── charts/       # all charts
+│   ├── dashboard/    # dashboard mockup
+│   └── reports/      # missing values, validation, cleaning decisions, KPI tables
+├── reports/
+│   └── final_report.pdf
+├── screenshots/      # key outputs (dataset overview, missing values, KPIs, trend, dashboard)
+├── README.md
+└── requirements.txt
+```
 
-### 5. Data Visualization
-
-Created visualizations to communicate:
-
-- Monthly sales trends.
-- Order status distribution.
-- Payment method distribution.
-- Top product categories.
-- State-wise and city-wise sales.
-- Delivery performance.
-- Sales correlation.
-- Customer type distribution.
-- Customer geographical distribution.
-- Overall sales dashboard.
-
-## Key Project Results
-
-| Metric | Result |
-|---|---:|
-| Total Orders | 99,441 |
-| Total Units Sold | 112,650 |
-| Total Product Sales Value | R$13,591,643.70 |
-| Average Product Sales Value per Order | R$136.68 |
-| Total Unique Customers | 96,096 |
-| One-Time Customers | 93,099 |
-| Repeat Customers | 2,997 |
-| Repeat Customer Percentage | 3.12% |
-
-**KPI Calculation Note:** Total Product Sales Value is calculated using order item prices across all order statuses, excluding freight. It is not the same as completed-sales revenue or total payment value. Average Product Sales Value per Order is calculated using this product sales value divided by total orders.
-
-## Important Business Insights
-
-1. **Overall Sales Performance:** The platform recorded 99,441 orders and 112,650 units sold, demonstrating substantial transaction activity.
-
-2. **Monthly Order Trend:** November 2017 recorded the highest order volume, with 7,544 orders. This indicates a significant increase in purchasing activity during that month.
-
-3. **Top Revenue-Generating Category:** The `health_beauty` category generated the highest product sales value, amounting to R$1,258,681.34.
-
-4. **Top-Selling Category by Quantity:** The `bed_bath_table` category recorded the highest quantity sold, with 11,115 units. This shows that the category with the highest sales quantity may differ from the category generating the highest revenue.
-
-5. **Customer Retention:** Out of 96,096 unique customers, 2,997 were repeat customers. The repeat customer percentage was 3.12%, indicating an opportunity to improve customer retention.
-
-6. **Top Revenue-Generating Product:** Product `bb50f2e236e5eea0100680137654686c`, belonging to the `beleza_saude` category, generated R$63,560.00 from 194 units sold across 186 delivered orders.
-
-7. **Delivery Performance:** Delivery performance analysis helps identify delivery delays and geographical areas that may need operational improvement.
-
-8. **Payment Behaviour:** Payment method and installment analysis provide information about customer payment preferences and can support improvements to the checkout experience.
-
-**Product Revenue Note:** The top product revenue result is calculated using delivered orders only. Product sales values exclude freight charges.
-
-## Business Recommendations
-
-- Introduce customer loyalty and retention programs.
-- Provide personalized offers to encourage repeat purchases.
-- Focus marketing campaigns on high-performing product categories.
-- Promote popular products based on customer demand.
-- Improve delivery performance in regions with higher delay rates.
-- Analyze payment preferences to improve the checkout experience.
-- Use monthly sales trends for better business planning.
-
-## Data Quality and Validation
-
-The project included systematic data quality checks:
-
-- Missing values were identified and documented.
-- Duplicate records were checked across the original datasets.
-- No duplicate rows were identified in the checked datasets.
-- Missing product information was investigated against the original order items dataset.
-- 775 orders with missing product information had no matching original order item records.
-- Raw datasets were preserved separately from cleaned outputs.
-- The final sales dataset was saved and verified.
-
-## Project Output Files
-
-### Main Files
-
-- `01_data_inspection.ipynb` – Main data inspection and analysis notebook.
-- `README.md` – Project documentation.
-- `requirements.txt` – Required Python libraries.
-
-### Sales Analysis Outputs
-
-Location: `outputs/sales_analysis/`
-
-- `final_sales_dataset.csv`
-- `sales_missing_values_report.csv`
-- `sales_dataset_summary.csv`
-- `sales_dashboard_kpis.csv`
-- `monthly_sales_trend.png`
-- `order_status_distribution_readable.png`
-- `payment_type_distribution_readable.png`
-- `top_10_states_sales_chart.png`
-- `top_10_cities_sales_chart.png`
-- `top_10_categories_sales_value.png`
-- `delivery_performance_chart.png`
-- `sales_correlation_heatmap.png`
-- `sales_analysis_dashboard.png`
-- `customer_type_distribution.png`
-- `top_10_customer_states.png`
-- `top_10_customer_cities.png`
-
-### Data Quality Report
-
-Location: `outputs/reports/`
-
-- `missing_values_analysis.png`
-
-## Limitations and Assumptions
-
-- The analysis is based on the available Olist public dataset.
-- Missing values were not filled with assumed values when original records could not verify them.
-- Product sales value excludes freight charges.
-- The overall product sales KPI includes all order statuses.
-- The top revenue-generating product calculation uses delivered orders only.
-- September 2016 and October 2018 may represent partial periods in the available dataset.
-- Historical trends do not guarantee future sales performance.
-
-## Conclusion
-
-This project demonstrates an end-to-end data analysis workflow using a real-world Brazilian e-commerce dataset.
-
-Data inspection, cleaning, validation, KPI calculation, exploratory analysis, customer analysis, and visualization were performed to understand business performance.
-
-The findings highlight product category performance, customer retention opportunities, monthly order trends, payment preferences, and delivery performance.
-
-The project demonstrates how data analysis can support business decisions through meaningful insights and visual reporting.
-
-## How to Run the Project
+## How to Run
 
 1. Clone or download this repository.
-2. Open the project folder in VS Code.
-3. Create and activate a Python virtual environment if required.
-4. Install the required libraries:
+2. (Optional) create a virtual environment: `python -m venv .venv` and activate it.
+3. Install the libraries:
+   ```
+   pip install -r requirements.txt
+   ```
+4. Start Jupyter and open the notebook:
+   ```
+   jupyter notebook notebooks/week1_analysis.ipynb
+   ```
+5. Run all cells from top to bottom. The notebook finds the project folder by itself, reads `data/raw/`, and rewrites the cleaned data, charts and report tables.
 
-```bash
-pip install -r requirements.txt
-```
+The raw files must stay in `data/raw/` with their original names.
 
-5. Open the Jupyter Notebook:
+## Reports
 
-```bash
-jupyter notebook 01_data_inspection.ipynb
-```
-
-6. Run the notebook cells from top to bottom.
-
-**Note:** Keep the original datasets in the `data/raw/` folder so the notebook can access the required input files.
-
-## GitHub Repository
-
-[Brazilian E-Commerce Sales Analysis](https://github.com/Jana-27-cyber/Brazilian-E-Commerce-Sales-Analysis)
+- Full written report: [`reports/final_report.pdf`](reports/final_report.pdf)
+- Cleaning decisions: `outputs/reports/cleaning_decisions.csv`
+- Validation checks: `outputs/reports/validation_checks.csv`
 
 ## Author
 
+**Name:** Janarthanan M
 **GitHub:** [Jana-27-cyber](https://github.com/Jana-27-cyber)
-
-**Project:** Data Science Internship – Week 1
-
-**Domain:** Data Science | Data Analysis | E-Commerce Analytics
+**Program:** Data Science Internship, WeIntern Pvt Ltd (Week 1)

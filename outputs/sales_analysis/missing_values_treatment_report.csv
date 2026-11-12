@@ -1,3 +1,0 @@
-Issue,Affected Orders,Investigation Result,Treatment Decision,Reason
-Missing product information,775,No matching records found in the original order_items dataset.,"Retain NaN. Product value, freight value and item count cannot be recovered from available records.",Missing order-item records do not prove that product value is zero.
-Missing payment information,1,"One delivered order has 3 item records worth R$134.97, but no matching record in the original payments dataset.",Retain NaN for total_payment.,No original payment record is available to verify the payment value.

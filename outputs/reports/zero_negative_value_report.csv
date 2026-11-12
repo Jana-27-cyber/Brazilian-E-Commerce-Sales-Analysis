@@ -1,9 +1,0 @@
-Dataset,Column,Zero Count,Negative Count,Missing Count,Minimum,Maximum
-order_items,price,0,0,0,0.85,6735.0
-order_items,freight_value,383,0,0,0.0,409.68
-payments,payment_value,9,0,0,0.0,13664.08
-payments,payment_installments,2,0,0,0.0,24.0
-products,product_weight_g,4,0,2,0.0,40425.0
-products,product_length_cm,0,0,2,7.0,105.0
-products,product_height_cm,0,0,2,2.0,105.0
-products,product_width_cm,0,0,2,6.0,118.0

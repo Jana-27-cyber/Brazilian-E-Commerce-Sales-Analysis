@@ -1,0 +1,28 @@
+Rule,Table,Violations,Action,Result
+Price must be greater than 0,order_items,0,None needed,PASS
+Freight value must not be negative,order_items,0,None needed,PASS
+Each item row is one unit (order_item_id >= 1),order_items,0,None needed,PASS
+Payment value must be greater than 0,payments,9,Kept and flagged: zero-value vouchers and 'not_defined' payments carry no money,REVIEWED
+Payment installments must be at least 1,payments,2,Kept and flagged,REVIEWED
+Review score must be between 1 and 5,reviews,0,None needed,PASS
+Order dates follow a valid date format,orders,0,None needed,PASS
+Order status values are standardized,orders,0,None needed,PASS
+Payment type has a defined value,payments,3,Kept and flagged (value is 0),REVIEWED
+Category names without spelling variants,products,0,None needed,PASS
+Categories missing an English translation,products,2,"Translated manually: pc_gamer, portateis_cozinha_e_preparadores_de_alimentos",REVIEWED
+State codes are 2 uppercase letters,customers,0,None needed,PASS
+State codes are 2 uppercase letters,sellers,0,None needed,PASS
+City names are lowercase without stray spaces,customers,0,None needed,PASS
+Approval time earlier than purchase time,orders,0,None needed,PASS
+Carrier pickup earlier than approval,orders,1359,Kept and flagged: timestamps conflict but the order itself is valid,REVIEWED
+Customer delivery earlier than carrier pickup,orders,23,Kept and flagged,REVIEWED
+Customer delivery earlier than purchase,orders,0,None needed,PASS
+Delivered order without a delivery date,orders,8,Flagged and excluded from delivery-time metrics,REVIEWED
+Delivery date present but order not delivered,orders,6,Kept; status is the source of truth,REVIEWED
+Order item points to an unknown order,order_items,0,None needed,PASS
+Order item points to an unknown product,order_items,0,None needed,PASS
+Order item points to an unknown seller,order_items,0,None needed,PASS
+Order points to an unknown customer,orders,0,None needed,PASS
+Payment points to an unknown order,payments,0,None needed,PASS
+Review points to an unknown order,reviews,0,None needed,PASS
+Order has no item rows,orders,775,Kept in order counts; excluded from revenue because there is no price,REVIEWED

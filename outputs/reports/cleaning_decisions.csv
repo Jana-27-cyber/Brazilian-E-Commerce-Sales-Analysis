@@ -1,0 +1,13 @@
+Issue,Evidence,Decision,Why
+Date columns stored as text,8 date columns across 3 tables,Converted to datetime,Needed for monthly trends and delivery time; 0 values failed to parse
+Missing order timestamps,"160 / 1,783 / 2,965 gaps in approval / carrier / customer delivery",Kept as missing,"Gaps follow order status (canceled, shipped, unavailable); filling would invent dates"
+Delivered orders without a delivery date,8 orders,"Flagged, excluded from delivery-time metrics only",They still count as completed sales
+Conflicting delivery timestamps,1382 orders where pickup precedes approval or delivery precedes pickup,"Flagged, kept",Order value and status are valid; deleting would remove real sales
+Products without category,"610 products, 1,603 order items",Labelled 'unknown',Deleting them would remove revenue and bias category results
+Two categories missing English names,"pc_gamer, portateis_cozinha_e_preparadores_de_alimentos",Translated manually,Avoids Portuguese labels in charts
+Misspelled column names,"product_name_lenght, product_description_lenght",Renamed to *_length,Consistent column names
+Zero-value payments,9 rows (vouchers and 'not_defined'),"Flagged, kept",Valid zero-cost vouchers; no effect on price-based revenue
+Duplicate rows,0 fully duplicated rows in all 8 tables,Nothing removed,Repeated IDs are valid multi-item orders or split payments
+Orders without item rows,775 orders (mostly unavailable / canceled),Kept in the orders table,"No price exists, so they add no revenue"
+Zip codes lost leading zeros,Stored as integers,Padded to 5 characters,"Zip prefixes are identifiers, not numbers"
+Review comment text,Large and mostly empty,Dropped from the cleaned reviews file only,Not analysed; the raw file keeps the text

@@ -1,0 +1,8 @@
+Check,Count,Finding
+orders: repeated order_id,0,None. Each order appears once.
+"order_items: repeated (order_id, order_item_id)",0,None. The pair is a unique key.
+order_items: order_id appearing on more than one row,13984,Valid repeats. These are orders with several items.
+"payments: repeated (order_id, payment_sequential)",0,None. Several payment rows per order are split payments (for example voucher + card).
+reviews: orders with more than one review,551,Valid. A customer can review the same order again; scores are averaged per order when used.
+reviews: review_id used on more than one row,814,"The same review_id belongs to different orders; (review_id, order_id) pairs are all unique."
+"reviews: repeated (review_id, order_id)",0,None.

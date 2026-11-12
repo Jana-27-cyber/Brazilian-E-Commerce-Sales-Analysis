@@ -1,0 +1,14 @@
+Table,Column,Missing,Missing %,Strategy,Reason
+orders,order_approved_at,160,0.16,Keep missing + flag,"Canceled and newly created orders were never approved, which is a real state. 14 delivered orders have a recording gap; an approval time cannot be invented."
+orders,order_delivered_carrier_date,1783,1.79,Keep missing + flag,"Orders that are unavailable, canceled, invoiced or still processing have not reached the carrier. 2 delivered orders have a recording gap."
+orders,order_delivered_customer_date,2965,2.98,Keep missing + flag,"Shipped, canceled and earlier-stage orders have no delivery yet. 8 delivered orders without a date are flagged and left out of delivery-time metrics only."
+reviews,review_comment_title,87656,88.34,Keep missing,Customers often skip the comment; the review score is complete and comment text is not analysed.
+reviews,review_comment_message,58247,58.7,Keep missing,Customers often skip the comment; the review score is complete and comment text is not analysed.
+products,product_category_name,610,1.85,Fill with label 'unknown',"Categorical field. The same 610 products also miss name, description and photo data, so the category cannot be recovered. They stay in the data because 1,603 order items depend on them."
+products,product_name_lenght,610,1.85,Keep missing,Same products as the missing category; the field is not used in any KPI.
+products,product_description_lenght,610,1.85,Keep missing,Same products as the missing category; the field is not used in any KPI.
+products,product_photos_qty,610,1.85,Keep missing,Same products as the missing category; the field is not used in any KPI.
+products,product_weight_g,2,0.01,Fill with median,"Only 2 products; numeric field, so the median is a safe neutral value."
+products,product_length_cm,2,0.01,Fill with median,"Only 2 products; numeric field, so the median is a safe neutral value."
+products,product_height_cm,2,0.01,Fill with median,"Only 2 products; numeric field, so the median is a safe neutral value."
+products,product_width_cm,2,0.01,Fill with median,"Only 2 products; numeric field, so the median is a safe neutral value."

@@ -1,5 +1,0 @@
-Validation,Expected Count,Actual Count,Status
-Missing Product Information,775,775,PASS
-Missing Payment Information,1,1,PASS
-Missing Freight Information,775,775,PASS
-Missing Item Count,775,775,PASS

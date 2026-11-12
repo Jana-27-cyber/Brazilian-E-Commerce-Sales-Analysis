@@ -1,0 +1,9 @@
+KPI,Value,Meaning
+Total Revenue,"R$13,221,498.11","Total value of all completed (delivered) sales, excluding freight"
+Total Orders,"96,478",Number of delivered orders
+Average Order Value,R$137.04,Revenue divided by total orders
+Total Units Sold,"110,197",Sum of items sold in delivered orders
+Top-Selling Category,"bed_bath_table (10,953 units)",Category with the most units sold
+Top Revenue Category,"health_beauty (R$1,233,132)",Category with the highest sales contribution
+Top Revenue-Generating Product,"bb50f2e236... (health_beauty, R$63,560)",Product with the highest revenue (Olist hides product names)
+Revenue Realization,97.3%,Delivered product value as a share of the value of all orders

@@ -1,7 +1,0 @@
-Relationship,Records Checked,Unmatched References,Status
-Orders -> Customers,99441,0,PASS
-Order Items -> Orders,112650,0,PASS
-Order Items -> Products,112650,0,PASS
-Order Items -> Sellers,112650,0,PASS
-Payments -> Orders,103886,0,PASS
-Reviews -> Orders,99224,0,PASS
