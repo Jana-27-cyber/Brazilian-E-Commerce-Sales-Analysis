@@ -1,0 +1,11 @@
+customer_city,customer_state,total_orders,total_sales,city_label
+niteroi,RJ,849,139996.99,Niteroi (RJ)
+guarulhos,SP,1189,165121.99,Guarulhos (SP)
+campinas,SP,1444,216248.43,Campinas (SP)
+salvador,BA,1245,218071.5,Salvador (BA)
+porto alegre,RS,1379,224731.42,Porto Alegre (RS)
+curitiba,PR,1521,247392.48,Curitiba (PR)
+brasilia,DF,2131,354216.77999999997,Brasilia (DF)
+belo horizonte,MG,2773,421765.12,Belo Horizonte (MG)
+rio de janeiro,RJ,6882,1161927.36,Rio De Janeiro (RJ)
+sao paulo,SP,15540,2203373.09,Sao Paulo (SP)

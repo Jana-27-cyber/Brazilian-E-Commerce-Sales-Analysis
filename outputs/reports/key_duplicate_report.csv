@@ -1,0 +1,9 @@
+Dataset,Key Columns,Total Records,Duplicate Key Records,Key Status
+customers,customer_id,99441,0,Unique
+orders,order_id,99441,0,Unique
+order_items,"order_id, order_item_id",112650,0,Unique
+payments,"order_id, payment_sequential",103886,0,Unique
+reviews,review_id,99224,814,Duplicates Found
+products,product_id,32951,0,Unique
+sellers,seller_id,3095,0,Unique
+category_translation,product_category_name,71,0,Unique

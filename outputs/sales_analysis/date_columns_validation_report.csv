@@ -1,0 +1,6 @@
+Date Column,Missing Values,Invalid Date Values,Valid Date Values,Status
+order_purchase_timestamp,0,0,99441,PASS
+order_approved_at,160,0,99281,PASS
+order_delivered_carrier_date,1783,0,97658,PASS
+order_delivered_customer_date,2965,0,96476,PASS
+order_estimated_delivery_date,0,0,99441,PASS

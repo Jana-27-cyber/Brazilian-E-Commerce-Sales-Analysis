@@ -1,0 +1,10 @@
+Dataset,Total Rows,Total Columns,Missing Values,Duplicate Rows
+customers,99441,5,0,0
+geolocation,738332,5,0,0
+orders,99441,9,4908,0
+order_items,112650,8,0,0
+payments,103886,7,0,0
+reviews,99224,7,145903,0
+products,32951,12,2450,0
+sellers,3095,4,0,0
+category_translation,71,2,0,0

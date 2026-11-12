@@ -1,0 +1,8 @@
+Report,Available,Status
+missing_values_treatment_report.csv,YES,PASS
+missing_values_treatment_validation.csv,YES,PASS
+dataset_reconciliation_report.csv,YES,PASS
+final_dataset_structure_validation.csv,YES,PASS
+date_columns_validation_report.csv,YES,PASS
+final_sales_kpis.csv,YES,PASS
+customer_kpi_recalculation_validation.csv,YES,PASS
