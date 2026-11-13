@@ -2,6 +2,7 @@ Rule,Table,Violations,Action,Result
 Price must be greater than 0,order_items,0,None needed,PASS
 Freight value must not be negative,order_items,0,None needed,PASS
 Each item row is one unit (order_item_id >= 1),order_items,0,None needed,PASS
+Derived quantity per order line (same product in an order) is at least 1,order_items,0,None needed. Quantity is derived by counting rows; the maximum is 20 units of one product in one order,PASS
 Payment value must be greater than 0,payments,9,Kept and flagged: zero-value vouchers and 'not_defined' payments carry no money,REVIEWED
 Payment installments must be at least 1,payments,2,Kept and flagged,REVIEWED
 Review score must be between 1 and 5,reviews,0,None needed,PASS

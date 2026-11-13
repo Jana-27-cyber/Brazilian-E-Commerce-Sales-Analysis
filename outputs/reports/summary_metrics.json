@@ -73,8 +73,8 @@
       "Why": "Not analysed; the raw file keeps the text"
     }
   ],
-  "validation_checks": 27,
-  "validation_passed": 18,
+  "validation_checks": 28,
+  "validation_passed": 19,
   "total_revenue": 13221498.11,
   "total_orders": 96478,
   "aov": 137.0415857501192,
@@ -343,6 +343,17 @@
     "created": 5,
     "approved": 2
   },
+  "cancel_first6": 1.9181876587307336,
+  "cancel_last6": 0.6930634889510117,
+  "real_first6": 95.39410515228087,
+  "real_last6": 97.78879990176334,
+  "cancel_peak_month": "Feb 2017",
+  "cancel_peak_pct": 3.48314606741573,
+  "cancel_low_month": "Apr 2018",
+  "cancel_low_pct": 0.2882259691598213,
+  "real_low_month": "Jan 2017",
+  "real_low_pct": 92.92302643931609,
+  "real_low_in_progress_pct": 4.625,
   "pay_share": {
     "credit_card": 78.46409386819963,
     "boleto": 17.960378967436405,
@@ -398,8 +409,8 @@
     ],
     [
       "Payments and cancellations",
-      "Credit Card makes up 78.5% of payment value and 67% of card payments use installments. 1.24% of orders were canceled or unavailable (R$97,243 of product value).",
-      "Checkout should be designed around card installments, and cancellations are lost revenue worth tracking."
+      "Credit Card makes up 78.5% of payment value and 67% of card payments use installments. 1.24% of orders were canceled or unavailable (R$97,243 of product value). Monthly cancellations fell from an average of 1.9% in the first six months to 0.7% in the last six, and revenue realization rose from 95.4% to 97.8%.",
+      "Checkout should be designed around card installments, and the falling cancellation rate suggests fulfilment became more reliable, though the data cannot show why."
     ]
   ],
   "recommendations": [
@@ -448,6 +459,7 @@
     "late-delivery-by-state": "MA has the highest late rate (19.7% versus 8.1% nationally). Late orders average a review score of 2.57 compared with 4.29 for on-time orders, which suggests lateness is linked to unhappy customers.",
     "monthly-sales-trend": "Revenue grew from R$111,798 in Jan 2017 to R$838,577 in Aug 2018. Nov 2017 is the peak (+52% on Oct 2017), and 1,176 orders on 24 Nov 2017 alone (6.1x a typical November day) point to a promotion such as Black Friday as the likely driver. Revenue then fell 26% in December, so the jump was a spike, not a new baseline.",
     "category-revenue-trend": "Between Jan-Aug 2017 and Jan-Aug 2018, watches_gifts grew fastest (+242%) while bed_bath_table grew slowest (+109%), so category growth is uneven.",
+    "delivery-status-trend": "Canceled or unavailable orders fell from an average of 1.9% of monthly orders in the first six months to 0.7% in the last six (peak 3.5% in Feb 2017), and revenue realization rose from 95.4% to 97.8% (lowest 92.9% in Jan 2017). This suggests fulfilment became more reliable over time, so less ordered value was lost; the data cannot show the reason.",
     "payment-mode-share": "Credit Card accounts for 78.5% of payment value, and 67% of card payments are split into installments, so installment-friendly checkout matters to customers.",
     "dashboard-mockup": "One page combines six KPIs, the monthly trend, category and regional comparisons: SP and health_beauty lead, and Nov 2017 stands out as the peak month."
   },

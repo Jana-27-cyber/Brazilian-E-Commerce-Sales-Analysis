@@ -27,11 +27,11 @@ Python, Pandas, NumPy, Matplotlib, Jupyter Notebook, Git and GitHub.
 1. **Inspection:** loaded all tables, classified every column (identifier, numeric, categorical, date, text) and recorded sizes.
 2. **Missing values:** measured gaps column by column and chose a documented strategy for each (keep and flag, fill with a label, fill with the median).
 3. **Duplicates:** checked full-row duplicates and repeated IDs. No accidental duplicates were found, so nothing was removed.
-4. **Validation:** 27 rules tested (18 with zero violations) covering prices, payment values, review scores, date formats and order, standardized values, and links between tables.
+4. **Validation:** 28 rules tested (19 with zero violations) covering prices, payment values, review scores, date formats and order, standardized values, and links between tables.
 5. **Cleaning:** converted dates, standardized text, fixed column names, translated two missing category names, and saved cleaned files separately. Raw data is untouched.
 6. **KPIs:** revenue, orders, average order value, units, top category and top product, calculated on delivered orders and verified against the raw files.
 7. **Analysis:** monthly trend, category trend, regions, customer segments, delivery performance and payments.
-8. **Visualization:** 6 bar charts, 2 line charts, 1 pie chart and a dashboard mockup, each with a title, labelled axes and a written finding.
+8. **Visualization:** 6 bar charts, 3 line charts, 1 pie chart and a dashboard mockup, each with a title, labelled axes and a written finding.
 9. **Reporting:** a 10-section PDF report with findings, recommendations and limitations.
 
 ## KPI Summary (delivered orders, freight excluded)
@@ -57,7 +57,7 @@ Revenue is the sum of item price for orders with status `delivered`. Freight is 
 5. **Skewed customer value:** The top 10% of customers generate 41.1% of revenue.
 6. **Geographic concentration:** SP contributes 38.3% of revenue and the top three states 63.4%. Sao Paulo holds 15.6% of orders. High-value orders (R$269 and above) follow order volume rather than clustering in one city: Sao Paulo has 13.5% of them against 15.6% of all orders.
 7. **Delivery quality:** Average delivery takes 12.6 days and 8.11% of orders arrive after the estimated date; MA is the worst state at 19.7%. Late orders score 2.57 in reviews against 4.29 for on-time orders.
-8. **Payments and cancellations:** Credit Card makes up 78.5% of payment value and 67% of card payments use installments. 1.24% of orders were canceled or unavailable (R$97,243 of product value).
+8. **Payments and cancellations:** Credit Card makes up 78.5% of payment value and 67% of card payments use installments. 1.24% of orders were canceled or unavailable (R$97,243 of product value). Monthly cancellations fell from an average of 1.9% in the first six months to 0.7% in the last six, and revenue realization rose from 95.4% to 97.8%.
 
 ## Recommendations
 
@@ -74,6 +74,7 @@ Revenue is the sum of item price for orders with status `delivered`. Freight is 
 | --- | --- |
 | Monthly sales trend (line) | `outputs/charts/monthly-sales-trend.png` |
 | Top 5 category revenue trend (line) | `outputs/charts/category-revenue-trend.png` |
+| Delivery status trend and revenue realization (line) | `outputs/charts/delivery-status-trend.png` |
 | Revenue by category (bar) | `outputs/charts/revenue-by-category.png` |
 | Top 10 products by units (bar) | `outputs/charts/top-10-products-by-units.png` |
 | Orders by city (bar) | `outputs/charts/orders-by-city.png` |
